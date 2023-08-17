@@ -60,9 +60,49 @@
             Password is required
           </div>
           <div *ngIf="f['pass'].errors && f['pass'].errors['pattern']">
-            Password  should be strong
+            Password should be strong
           </div>
         </div>
+        <label for="">Gender : </label>
+        <div class="form-check">
+          <label for="">Male</label>
+          <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Male">
+        </div>
+        <div class="form-check">
+          <label for="">Female</label>
+          <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Female">
+        </div>
+        <div class="form-group">
+          <label for="">City : </label>
+          <select name="city" formControlName="city" class="form-control"
+            [class.is-invalid]="f['city'].invalid && f['city'].touched">
+            <option value="" selected>Select</option>
+            <option value="Nepanagar">Nepanagar</option>
+            <option value="Indore">Indore</option>
+            <option value="Pune">Pune</option>
+            <option value="Noida">Noida</option>
+          </select>
+        </div>
+        <div class="alert alert-danger" *ngIf="f['city'].invalid && f['city'].touched">
+          <div *ngIf="f['city'].errors && f['city'].errors['required']">
+            City is required
+          </div>
+        </div>
+        <div class="mt-3">
+          <label for="">Hobbies :</label>
+          <div *ngFor="let hobby of hobbiesArray;let i = index;">
+            <label for="">
+              <input type="checkbox" (change)="onChange($event)" class="form-check-input" [value]="hobby" >
+              {{hobby}}
+            </label>
+          </div>
+        </div>
+        <hr>
+        <div class="form-check mt-2">
+          <label for="">I Accept the Term & Conditions</label>
+          <input type="checkbox" formControlName="accept" class="form-check-input" name="accept">
+        </div>
+       <hr>
         <div class=" mt-4">
           <input type="submit" [class.disabled]="signupForm.invalid" class="btn btn-primary" value="Submit">
         </div>
