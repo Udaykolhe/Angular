@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators, FormArray } from "@angular/forms";
 export class AppComponent {
   title = 'reactive_form';
 
-  hobbiesArray: string[] = ['Cricket', 'FootBall', 'Pool'];
+  hobbiesArray: string[] = ['Cricket', 'FootBall', 'Pool','Chess','Reading',];
 
 
 

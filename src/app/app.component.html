@@ -1,12 +1,12 @@
 <div class="container border">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="bg-info mt-4 p-4 text-center">
-        <H1>Reactive Form</H1>
-      </div>
-      <form [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
-        <div class="form-group mt-4">
-          <label for="">Name : </label>
+  <form class="" [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
+    <div class="raman bg-success p-2 text-dark bg-opacity-50 text-center p-4 mb-4">
+      <h1>Reactive Form</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="input-group input-group-md mb-3">
+          <span class="input-group-text" for="">Name : </span>
           <input type="text" name="name" [class.is-invalid]="f['name'].invalid && f['name'].touched"
             class="form-control" placeholder="Enter Name" formControlName="name">
         </div>
@@ -21,8 +21,10 @@
             20 Characters max
           </div>
         </div>
-        <div class="form-group">
-          <label for="">Age : </label>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group input-group-md mb-3">
+          <label class="input-group-text" for="">Age : </label>
           <input type="number" name="age" [class.is-invalid]="f['age'].invalid && f['age'].touched" class="form-control"
             placeholder="Enter Age" formControlName="age">
         </div>
@@ -37,8 +39,10 @@
             Age is less then 50
           </div>
         </div>
-        <div class="form-group">
-          <label for="">Email : </label>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group input-group-md mb-3">
+          <label class="input-group-text" for="">Email : </label>
           <input type="email" name="email" [class.is-invalid]="f['email'].invalid && f['email'].touched"
             class="form-control" placeholder="Enter Email" formControlName="email">
         </div>
@@ -50,8 +54,10 @@
             Email Id invalid
           </div>
         </div>
-        <div class="form-group">
-          <label for="">Password : </label>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group input-group-md mb-4">
+          <label class="input-group-text" for="">Password : </label>
           <input type="password" name="pass" [class.is-invalid]="f['pass'].invalid && f['pass'].touched"
             class="form-control" placeholder="Enter Password" formControlName="pass">
         </div>
@@ -63,20 +69,26 @@
             Password should be strong
           </div>
         </div>
-        <label for="">Gender : </label>
-        <div class="form-check">
-          <label for="">Male</label>
-          <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Male">
+      </div>
+      <div class="col-md-4">
+        <div class="input-group input-group-md ">
+          <label class="input-group-text" for="">Gender : </label>
+          <div class="form-check form-check-inline ms-4 mt-2">
+            <label class="form-check-label" for="">Male</label>
+            <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Male">
+          </div>
+          <div class="form-check form-check-inline mt-2">
+            <label class="form-check-label" for="">Female</label>
+            <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Female">
+          </div>
         </div>
-        <div class="form-check">
-          <label for="">Female</label>
-          <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Female">
-        </div>
-        <div class="form-group">
-          <label for="">City : </label>
-          <select name="city" formControlName="city" class="form-control"
+      </div>
+      <div class="col-md-4">
+        <div class="input-group input-group-md mb-3">
+          <label class="input-group-text" for="">City : </label>
+          <select name="city" formControlName="city" class="form-select"
             [class.is-invalid]="f['city'].invalid && f['city'].touched">
-            <option value="" selected>Select</option>
+            <option value="" selected>Select.....</option>
             <option value="Nepanagar">Nepanagar</option>
             <option value="Indore">Indore</option>
             <option value="Pune">Pune</option>
@@ -88,25 +100,26 @@
             City is required
           </div>
         </div>
-        <div class="mt-3">
-          <label for="">Hobbies :</label>
-          <div *ngFor="let hobby of hobbiesArray;let i = index;">
+      </div>
+      <div class="col-12 mb-3">
+        <div class="input-group input-group-md">
+          <label class="input-group-text" for="">Hobbies :</label>
+          <div class="ms-2 mt-2" *ngFor="let hobby of hobbiesArray;let i = index;">
             <label for="">
-              <input type="checkbox" (change)="onChange($event)" class="form-check-input" [value]="hobby" >
+              <input type="checkbox" (change)="onChange($event)" class="form-check-input" [value]="hobby">
               {{hobby}}
             </label>
           </div>
         </div>
-        <hr>
-        <div class="form-check mt-2">
-          <label for="">I Accept the Term & Conditions</label>
-          <input type="checkbox" formControlName="accept" class="form-check-input" name="accept">
-        </div>
-       <hr>
-        <div class=" mt-4">
-          <input type="submit" [class.disabled]="signupForm.invalid" class="btn btn-primary" value="Submit">
-        </div>
-      </form>
+      </div>
+      <hr>
+      <div class="form-check ms-2">
+        <label for="">I Accept the Term & Conditions</label>
+        <input type="checkbox" formControlName="accept" class="form-check-input" name="accept">
+      </div>
+      <div class="mt-2 mb-2">
+        <input type="submit" [class.disabled]="signupForm.invalid" class="btn btn-primary" value="Submit">
+      </div>
     </div>
-  </div>
+  </form>
 </div>
