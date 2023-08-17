@@ -1,28 +1,70 @@
-<div class="container">
+<div class="container border">
   <div class="row">
     <div class="col-md-4">
       <div class="bg-info mt-4 p-4 text-center">
         <H1>Reactive Form</H1>
       </div>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-md-4">
       <form [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
-        <div class="form-group">
+        <div class="form-group mt-4">
           <label for="">Name : </label>
-          <input type="text" name="name" class="form-control" placeholder="Enter Name" formControlName="name">
+          <input type="text" name="name" [class.is-invalid]="f['name'].invalid && f['name'].touched"
+            class="form-control" placeholder="Enter Name" formControlName="name">
+        </div>
+        <div class="alert alert-danger" *ngIf="f['name'].invalid && f['name'].touched">
+          <div *ngIf="f['name'].errors && f['name'].errors['required']">
+            Name is required
+          </div>
+          <div *ngIf="f['name'].errors && f['name'].errors['minlength']">
+            3 Characters min
+          </div>
+          <div *ngIf="f['name'].errors && f['name'].errors['maxlength']">
+            20 Characters max
+          </div>
         </div>
         <div class="form-group">
           <label for="">Age : </label>
-          <input type="number" name="age" class="form-control" placeholder="Enter Age" formControlName="age">
+          <input type="number" name="age" [class.is-invalid]="f['age'].invalid && f['age'].touched" class="form-control"
+            placeholder="Enter Age" formControlName="age">
+        </div>
+        <div class="alert alert-danger" *ngIf="f['age'].invalid && f['age'].touched">
+          <div *ngIf="f['age'].errors && f['age'].errors['required']">
+            Age is required
+          </div>
+          <div *ngIf="f['age'].errors && f['age'].errors['min']">
+            Age is Greater than 10
+          </div>
+          <div *ngIf="f['age'].errors && f['age'].errors['max']">
+            Age is less then 50
+          </div>
         </div>
         <div class="form-group">
           <label for="">Email : </label>
-          <input type="email" name="email" class="form-control" placeholder="Enter Email" formControlName="email">
+          <input type="email" name="email" [class.is-invalid]="f['email'].invalid && f['email'].touched"
+            class="form-control" placeholder="Enter Email" formControlName="email">
         </div>
-        <div class="d-grid mt-4">
-          <input type="submit" class="btn btn-primary" value="Submit">
+        <div class="alert alert-danger" *ngIf="f['email'].invalid && f['email'].touched">
+          <div *ngIf="f['email'].errors && f['email'].errors['required']">
+            Email is required
+          </div>
+          <div *ngIf="f['email'].errors && f['email'].errors['pattern']">
+            Email Id invalid
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Password : </label>
+          <input type="password" name="pass" [class.is-invalid]="f['pass'].invalid && f['pass'].touched"
+            class="form-control" placeholder="Enter Password" formControlName="pass">
+        </div>
+        <div class="alert alert-danger" *ngIf="f['pass'].invalid && f['pass'].touched">
+          <div *ngIf="f['pass'].errors && f['pass'].errors['required']">
+            Password is required
+          </div>
+          <div *ngIf="f['pass'].errors && f['pass'].errors['pattern']">
+            Password  should be strong
+          </div>
+        </div>
+        <div class=" mt-4">
+          <input type="submit" [class.disabled]="signupForm.invalid" class="btn btn-primary" value="Submit">
         </div>
       </form>
     </div>
